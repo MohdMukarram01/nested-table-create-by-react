@@ -1,0 +1,74 @@
+import { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+// import "./User.css";
+import { render } from "@testing-library/react";
+// import User2 from "./User2";
+// import React,{useEffect} from "react";
+import { Table } from 'react-bootstrap'
+
+function App(){
+  const array=[{Name:"anil", Email:"Anil@gmail.com",address:
+    [ {hm:"200",city:"kanpur",country:"india"},
+      {hm:"201",city:"noida",country:"india"},
+      {hm:"202",city:"mumbai",country:"india"},
+    ]},
+
+    {Name:"raju", Email:"raju@gmail.com",address:
+      [ {hm:"203",city:"banarash",country:"india"},
+        {hm:"204",city:"allahabad",country:"india"},
+        {hm:"205",city:"raibareli",country:"india"}
+      ]},
+
+    {Name:"sonu", Email:"sonu@gmail.com",address:
+      [ {hm:"200",city:"lucknow",country:"india"},
+        {hm:"200",city:"jhansi",country:"india"},
+        {hm:"200",city:"Salon",country:"india"},
+      ]}
+
+  ]
+  return(
+    <div className="App" >
+      <h1>array</h1>
+   
+      <Table striped hover variant="dark">
+        <tbody>
+        <tr>
+          <td>S.N</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>address</td>
+        </tr>
+  
+        {
+        array.map((item,i)=>
+          <tr key={i}>
+            <td>{i+1}</td>
+        <td>{item.Name}</td>
+        <td>{item.Email}</td>
+        <td>
+        <Table variant="dark">
+          <tbody>
+          {
+            item.address.map((data)=>
+            <tr>
+              <td>{data.hm}</td>
+              <td>{data.city}</td>
+              <td>{data.country}</td>
+            </tr>
+            )
+          }
+        </tbody>
+       </Table>
+        </td>
+        </tr>
+        )
+      }
+      </tbody>
+      </Table>
+
+    </div>
+  )
+}
+
+export default App;
